@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook:latest
+FROM jupyter/datascience-notebook:latest
 
 # Switch to the root user so we can install additional packages.
 
@@ -15,10 +15,10 @@ RUN apt-get update && \
 
 # Add labels so OpenShift recognises this as an S2I builder image.
 
-LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook)." \
-      io.k8s.display-name="Jupyter (minimal-notebook)" \
+LABEL io.k8s.description="S2I builder for Jupyter (datascience-notebook)." \
+      io.k8s.display-name="Jupyter (datascience-notebook)" \
       io.openshift.expose-services="8888:http" \
-      io.openshift.tags="builder,python,jupyter" \
+      io.openshift.tags="builder,python,jupyter,julia" \
       io.openshift.s2i.scripts-url="image:///opt/app-root/s2i/bin"
 
 # Copy in S2I builder scripts for installing Python packages and copying
